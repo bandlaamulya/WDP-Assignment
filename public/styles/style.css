@@ -1,0 +1,45 @@
+body {background-color: peachpuff;}
+.flex > div {
+  color: #400cba;
+  background-color: darkgrey;
+  margin: 12px;
+  padding: 15;
+  font-size: 25px;
+}
+navigation_bar{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.navigation_bar li {
+display: inline-block;
+}
+h1 {
+  font-size: 40px;
+  color: purple;
+}
+h3
+{
+  font-size: 25px;
+  background-color:beige;
+  color: rgb(18, 159, 18);
+}
+
+h2 {
+  color: rgb(18, 159, 18);
+  font-size: 30px;
+}
+
+p {
+  color: black;
+  font-size: 14px;
+
+}
+ img{
+  height: 400px;
+  width: 40%;
+  border-radius: 20px;
+
+ }
