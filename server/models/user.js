@@ -28,7 +28,7 @@ async function register(user) {
 
   const sql = `INSERT INTO users (firstname, lastname, email_id, password)
     VALUES ("${user.firstname}", "${user.lastname}", "${user.email_id}", "${user.password}");
-  
+  `
   await con.query(sql);
   return await login(user);
 }
@@ -42,3 +42,51 @@ async function login(user) { // {userName: "sda", password: "gsdhjsga"}
 
   return cUser[0];
 }
+// Update User function
+async function editUser(user) {
+  let sql = `UPDATE users 
+    SET email_id = "${user.email_id}"
+    WHERE userID = ${user.userID}
+  `;
+
+  await con.query(sql);
+  let updatedUser = await getUser(user);
+  return updatedUser[0];
+}
+
+// Delete User function
+async function deleteUser(user) {
+  let sql = `DELETE FROM users
+    WHERE userID = ${user.userID}
+  `
+  await con.query(sql);
+}
+
+// Useful Functions
+async function getUser(user) {
+  let sql;
+
+  if(user.userID) {
+    sql = `
+      SELECT * FROM users
+       WHERE userID = ${user.userID}
+    `
+  } else {
+    sql = `
+    SELECT * FROM users 
+      WHERE email_id = "${user.email_id}"
+  `;
+  }
+  return await con.query(sql);  
+}
+
+/*
+let cathy = {
+  userID: 5,
+  userName: "cathy123",
+  password: "icecream"
+}; 
+login(cathy);
+*/
+
+module.exports = { getAllUsers, login, register, editUser, deleteUser};

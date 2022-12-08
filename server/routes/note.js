@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
 
@@ -52,8 +52,4 @@ router
 
   
 module.exports = router;
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 76aee62 (user changes)
+*/
