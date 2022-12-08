@@ -52,8 +52,3 @@ router
 
   
 module.exports = router;
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 76aee62 (user changes)
