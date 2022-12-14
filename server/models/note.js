@@ -17,19 +17,58 @@ createTable();
 async function getAllnotes() {
   const sql = `SELECT * FROM notes;`;
   let users = await con.query(sql);
-  console.log(note)
+  console.log(users)
 }
 
-// Create  User - Registering
-async function register(note) {
-  let cNote = await getnote(note));
-  if(cNote.length > 0) throw Error("Username already in use");
+// Create  note content
+async function noteCreation(note) {
+  // let cUser = await getUser(user);
+  // if(cUser.length > 0) throw Error("Username already in use");
 
-  const sql = `INSERT INTO notes (noteID, noteCNT,)
-    VALUES ("${note.noteID}", "${note.noteCNT}",);
-  
-  return await con.query(sql);
+  const sql = `INSERT INTO notes (userID, noteContent)
+    VALUES ("${note.userID}", "${note.noteContent}");
+  `
+  await con.query(sql);
+  // return await login(user);
 }
 
 
-module.exports = { getAllnotes, login, register, editNote, deleteNote };
+async function editNote(note) {
+  let sql = `UPDATE notes 
+    SET noteContent = "${note.noteContent}"
+    WHERE userID = ${note.userID}
+  `;
+
+  await con.query(sql);
+  let updatedUser = await getNote(note);
+  return updatedUser[0];
+}
+
+async function getNote(note) {
+  let sql;
+
+  if(note.userID) {
+    sql = `
+      SELECT * FROM notes
+       WHERE userID = ${note.userID}
+    `
+  } else {
+    sql = `
+    SELECT * FROM notes 
+      WHERE userID = "${note.userID}"
+  `;
+  }
+  return await con.query(sql);  
+}
+
+// Delete User function
+async function deleteNote(note) {
+  let sql = `DELETE FROM notes
+    WHERE userID = ${note.userID}
+  `
+  await con.query(sql);
+}
+
+
+
+module.exports = { getAllnotes, noteCreation, editNote, deleteNote};
