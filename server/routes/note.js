@@ -34,7 +34,7 @@ router
   .delete('/delete', async (req, res) => {
     try {
       Note.deleteNote(req.body);
-      res.send({success: "We'll Miss You... :("})
+      res.send({success: "Note deleted... :("})
     } catch(err) {
       res.status(401).send({message: err.message})
     }
