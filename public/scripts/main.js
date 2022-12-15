@@ -1,4 +1,4 @@
-document.getElementById("btn-users").addEventListener('click', getUsers);
+/*document.getElementById("btn-users").addEventListener('click', getUsers);
 
 function getUsers() {
   fetch("http://localhost:3000/users/")
@@ -6,10 +6,30 @@ function getUsers() {
   .then((data) => console.log(data))
   .catch((err)=> console.log(err))
 }
+*/
+let nav = document.querySelector('nav');
+
+if(getCurrentUser()) {
+  nav.innerHTML = `
+    <ul>
+      <li><a href="bmi.html">Calculate</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a id="logout-btn">Logout</a></li>
+    </ul>
+  `
+} else {
+  nav.innerHTML = `
+    <ul>
+      <li><a href="bmi.html">Calculate</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Sign Up</a></li>
+    </ul>
+  `
+}
 
 
 
-async function fetchData(route = '', data = {}, GET) {
+export async function fetchData(route = '', data = {}, GET) {
     const response = await fetch(`http://localhost:3000${users}`, {
       method: GET, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -32,7 +52,7 @@ async function fetchData(route = '', data = {}, GET) {
 
 
 
-let detailDoc = document.getElementById("enterDetails");
+/*let detailDoc = document.getElementById("enterDetails");
 if(detailDoc) detailDoc.addEventListener("submit", customerObj);
 
 function customerObj(e){
@@ -94,4 +114,24 @@ customerFn.prototype.setpassword = function(password){
 
 customerFn.prototype.setnote = function(note){
     this.note = note;
+} */
+// logout event listener
+let logout = document.getElementById("logout-btn");
+if(logout) logout.addEventListener('click', removeCurrentUser)
+
+// stateful mechanism for user
+// logging in a user
+export function setCurrentUser(user) {
+  localStorage.setItem('user', JSON.stringify(user));
+}
+
+// getting current user function
+export function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('user'));
+}
+
+// logout function for current user
+export function removeCurrentUser() {
+  localStorage.removeItem('user');
+  window.location.href = "login.html";
 }
