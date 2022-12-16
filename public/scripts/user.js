@@ -28,7 +28,7 @@ function login(e) {
   fetchData("/users/login", user, "POST")
   .then((data) => {
     setCurrentUser(data);
-    window.location.href = "note.html";
+    window.location.href = "notes.html";
   })
   .catch((err) => {
     let p = document.querySelector('.error');
@@ -43,8 +43,8 @@ if(regForm) regForm.addEventListener('submit', register);
 function register(e) {
   e.preventDefault();
 
-  let firstname = document.getElementById("firstname").value;
-  let lastname = document.getElementById("lastname").value;
+  let firstname = document.getElementById("first_name").value;
+  let lastname = document.getElementById("last_name").value;
   let email_id = document.getElementById("email_id").value;
   let password = document.getElementById("password").value;
   let user = new User(firstname,lastname,email_id,password);
