@@ -27,7 +27,7 @@ if(getCurrentUser()) {
   `
 }
 
-/*
+
 export async function fetchData(route = '', data = {}, GET) {
     const response = await fetch(`http://localhost:3000${route}`, {
       method: GET, // *GET, POST, PUT, DELETE, etc.
