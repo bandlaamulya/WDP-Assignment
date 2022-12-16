@@ -9,10 +9,11 @@ function getUsers() {
 */
 let nav = document.querySelector('nav');
 
+/*
 if(getCurrentUser()) {
   nav.innerHTML = `
     <ul>
-      <li><a href="bmi.html">Calculate</a></li>
+      <li><a href="note.html">Note</a></li>
       <li><a href="profile.html">Profile</a></li>
       <li><a id="logout-btn">Logout</a></li>
     </ul>
@@ -20,17 +21,17 @@ if(getCurrentUser()) {
 } else {
   nav.innerHTML = `
     <ul>
-      <li><a href="bmi.html">Calculate</a></li>
+      <li><a href="note.html">Note</a></li>
       <li><a href="login.html">Login</a></li>
       <li><a href="register.html">Sign Up</a></li>
     </ul>
   `
 }
-
+*/
 
 
 export async function fetchData(route = '', data = {}, GET) {
-    const response = await fetch(`http://localhost:3000${users}`, {
+    const response = await fetch(`http://localhost:3000${route}`, {
       method: GET, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
