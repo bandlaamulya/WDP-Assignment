@@ -7,7 +7,7 @@ import {
   
   console.log(user);
   
-  let userID = user.userID; 
+  let userID = user.email_id; 
   console.log(userID);
   /*
   let note = {
@@ -22,7 +22,7 @@ import {
   
   function deleteAccount() {
   
-    if(confirm("Are you sure you want to delete your account???")) {
+    if(confirm("Are you sure you want to delete your account??")) {
       fetchData("/users/delete", user, "DELETE")
       .then((data) => {
         removeCurrentUser();
