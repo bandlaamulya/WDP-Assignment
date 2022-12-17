@@ -16,8 +16,8 @@ createTable();
 // grabbing all users in database
 async function getAllnotes() {
   const sql = `SELECT * FROM notes;`;
-  let users = await con.query(sql);
-  console.log(users)
+  return await con.query(sql);
+ // console.log(users)
 }
 
 // Create  note content
@@ -25,8 +25,8 @@ async function noteCreation(note) {
   // let cUser = await getUser(user);
   // if(cUser.length > 0) throw Error("Username already in use");
 
-  const sql = `INSERT INTO notes (userID, noteContent)
-    VALUES ("${note.userID}", "${note.noteContent}");
+  const sql = `INSERT INTO notes (noteContent, userID)
+    VALUES "(${note.noteContent})", ("${note.userID}")}");
   `
   await con.query(sql);
   // return await login(user);
@@ -47,16 +47,12 @@ async function editNote(note) {
 async function getNote(note) {
   let sql;
 
-  if(note.userID) {
+  //if(note.userID) 
+  {
     sql = `
       SELECT * FROM notes
        WHERE userID = ${note.userID}
     `
-  } else {
-    sql = `
-    SELECT * FROM notes 
-      WHERE userID = "${note.userID}"
-  `;
   }
   return await con.query(sql);  
 }

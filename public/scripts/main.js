@@ -28,9 +28,9 @@ let nav = document.querySelector('nav');
 // } */
 
 
-export async function fetchData(route = '', data = {}, GET) {
+export async function fetchData(route = '', data = {}, methodType) {
     const response = await fetch(`http://localhost:3000${route}`, {
-      method: GET, // *GET, POST, PUT, DELETE, etc.
+      method: methodType, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit

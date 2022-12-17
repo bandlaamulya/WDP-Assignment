@@ -23,7 +23,7 @@ function login(e) {
 
   let email_id = document.getElementById("email_id").value;
   let password = document.getElementById("password").value;
-  let user = new User(email_id, password);
+  let user = new User("", "", email_id, password);
 
   fetchData("/users/login", user, "POST")
   .then((data) => {
