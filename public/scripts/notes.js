@@ -14,15 +14,14 @@ if(noteForm) noteForm.addEventListener('submit', saveNote);
 
 function saveNote(e) {
   e.preventDefault();
-
-  let userID = document.getElementById("user_id").value;
+  let userID = 1
   let noteContent = document.getElementById("inputtext").value;
   let note = new User(userID, noteContent);
 
   fetchData("/notes/insert", note, "POST")
   .then((data) => {
     setCurrentUser(data);
-    window.location.replace = "login.html"
+    window.location.replace = "notes.html"
   })
   .catch((err) => {
     let p = document.querySelector('.error');

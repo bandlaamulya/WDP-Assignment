@@ -2,9 +2,9 @@ import { fetchData, setCurrentUser } from './main.js'
 
 // user class
 class User {
-  constructor(firstname,lastname,email_id,password) {
-    this.firstname = firstname;
-    this.lastname = lastname;
+  constructor(first_name,last_name,email_id,password) {
+    this.firstname = first_name;
+    this.lastname = last_name;
     this.email_id = email_id;
     this.password = password;
   }
@@ -15,7 +15,7 @@ class User {
 }
 
 // login functionality
-let loginForm = document.getElementById("login-form");
+let loginForm = document.getElementById("login_form");
 if(loginForm) loginForm.addEventListener('submit', login);
 
 function login(e) {
@@ -43,16 +43,16 @@ if(regForm) regForm.addEventListener('submit', register);
 function register(e) {
   e.preventDefault();
 
-  let firstname = document.getElementById("first_name").value;
-  let lastname = document.getElementById("last_name").value;
+  let first_name = document.getElementById("first_name").value;
+  let last_name = document.getElementById("last_name").value;
   let email_id = document.getElementById("email_id").value;
   let password = document.getElementById("password").value;
-  let user = new User(firstname,lastname,email_id,password);
+  let user = new User(first_name,last_name,email_id,password);
 
   fetchData("/users/register", user, "POST")
   .then((data) => {
     setCurrentUser(data);
-    window.location.href = "note.html";
+    window.location.href = "login.html";
   })
   .catch((err) =>{
     let p = document.querySelector('.error');
